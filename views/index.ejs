@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Simple Map</title>
+    <meta name="viewport" content="initial-scale=1.0">
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 100%
+        
+      }
+      th {
+        text-transform: uppercase;
+      }
+      td{
+        font-weight: bold;
+      }
+
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 0 auto;
+        padding: 0 30px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="map" class="card"></div>
+    <div class="container">
+    <table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Properties</th>
+      <th scope="col">Value</th>
+      
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row"><%= weather[30] %></th>
+      <td><%= weather[31] %>°C</td>
+      
+    </tr>
+    <tr>
+      <th scope="row"><%= weather[32] %></th>
+      <td><%= weather[33] %>°C</td>
+      
+    </tr>
+    <tr>
+      <th scope="row"><%= weather[34] %></th>
+      <td><%= weather[35] %>°C</td>
+      
+    </tr>
+    <tr>
+      <th scope="row"><%= weather[36] %></th>
+      <td><%= weather[37] %>°C</td>
+      
+    </tr>
+    <tr>
+      <th scope="row"><%= weather[38] %></th>
+      <td><%= weather[39] %>mb</td>
+      
+    </tr>
+    <tr>
+      <th scope="row"><%= weather[40] %></th>
+      <td><%= weather[41] %>%</td>
+      
+    </tr>
+     <tr>
+      <th scope="row"><%= weather[42] %></th>
+      <td><%= weather[43] %>km</td>
+      
+    </tr>
+     <tr>
+      <th scope="row"><%= weather[44] %><%= weather[46] %></th>
+      <td><%= weather[47] %>km/h</td>
+      
+    </tr>
+    
+
+  </tbody>
+  
+</table>
+</div>
+
+    <script>
+      var map;
+      var center = {lat: <%= loc.latitude %>, lng: <%= loc.longitude %>};
+      
+      function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 8,
+          center: center,
+          scrollwheel: false
+        });
+        var contentString = `<strong>My location<br /> Where i am currently</strong>`
+    
+        var infowindow = new google.maps.InfoWindow({
+        content: contentString
+        });
+        var marker = new google.maps.Marker({
+        position: center,
+        map: map
+         });
+        marker.addListener('click', function() {
+         infowindow.open(map, marker);
+         });
+      }
+    </script>
+  
+    
+    
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDZc_zjNmEHEmohAnEY4FmVaKd-y5LPDNE&callback=initMap"
+    async defer></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  </body>
+</html>
